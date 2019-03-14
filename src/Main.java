@@ -26,8 +26,21 @@ public class Main {
 	         
 	         try { 
 	        	 FileOutputStream fileout = new FileOutputStream(result);
-                String resultcontent = characterNum + "\r\n" + lineNum + "\r\n" + wordNum;
-                 
+                String resultcontent ="characters:"+ characterNum + "\r\n" 
+	        	 + "words:" +wordNum + "\r\n" 
+                	+"lines:"+ lineNum+"\r\n";
+                List<HashMap.Entry<String, Integer>> m = count.gethotwords();
+
+                int i = 0;
+                String j = new String();
+                if(m != null){
+                    if(m.size()!=0){
+                        for(;((i<10)&&(i<m.size()));i++){
+                            j= "<"+ m.get(i).getKey() + ">:" + m.get(i).getValue();
+                            resultcontent += j + "\r\n";
+                        }
+                    }
+                }
                 fileout.write(resultcontent.getBytes());
               
                 fileout.flush();

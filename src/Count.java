@@ -4,10 +4,14 @@ import java.util.*;
 public class Count 
 {
 	//private static List<String> list = new ArrayList<String>();
-	private int line=0;
+	private int linenum=0;
 	private static String text = new String();
 	private static Map<String,Integer> map = new HashMap<String,Integer>();
-	//private static List<Map.Entry<String, Integer>> wordlist = null; 
+	private static List<HashMap.Entry<String, Integer>> hotwords = null;
+
+    public static List<HashMap.Entry<String, Integer>> gethotwords() {
+        return hotwords;
+    }
 	public Count(File filein)
 	{
 		try {
@@ -33,11 +37,12 @@ public class Count
                 while ((lineTxt = bf1.readLine()) != null) //按列读取
                 {
                 	System.out.println(lineTxt);
-                	
-                	if(!(lineTxt == null || lineTxt.length()<=0))
-                	{	
-                		line++;
-                		// System.out.println(line+"\n");
+                	//!(lineTxt == null || lineTxt.length()<=0)
+                	String regexSpace = "\\s*";
+            		if(!(lineTxt.matches(regexSpace)))
+            		{
+            			linenum++;
+                		System.out.println(linenum+"\n");
                 	}
                 }
                 bf.close();
@@ -74,7 +79,8 @@ public class Count
 		return textNew.length();
 	}
 	public int Countline() {
-		return line;
+		
+		return linenum;
 	}
 	public int  Countword() {
 		int wordnum=0;
@@ -103,12 +109,12 @@ public class Count
 			}
 		}
 		System.out.println("word"+wordnum);
-		Sort(map);
+		hotwords=Sort(map);
 		return wordnum;
 		
 	}
 	
-	public static void Sort(Map m){
+	public static List<HashMap.Entry<String, Integer>> Sort(Map m){
 	Map<String, Integer> map = new HashMap<String, Integer>();
 	
 	// 通过ArrayList构造函数把map.entrySet()转换成list
@@ -123,9 +129,11 @@ public class Count
 	    	
 	    }
 	});
-	for (Map.Entry<String, Integer> mapping : list) {
-	    System.out.println(mapping.getKey() + " ：" + mapping.getValue());
-	}
+	/*for (Map.Entry<String, Integer> mapping : list) {
+	    System.out.println("<"+mapping.getKey()+ ">"+ " ：" + mapping.getValue());
+	}*/
+	
+	return list;
 	
 }
 }

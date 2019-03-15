@@ -17,9 +17,9 @@ public class Main {
 	         
 	         
 	         Count count = new Count(filein);
-	         int characterNum = count.Countcharacter();
-	         int lineNum = count.Countline();
-	         int wordNum = count.Countword();
+	         int characterNum = count.CountCharacter();
+	         int lineNum = count.CountLine();
+	         int wordNum = count.CountWord();
 	         
 	         String result="result.txt";
 	         

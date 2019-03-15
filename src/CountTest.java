@@ -13,19 +13,19 @@ public class CountTest {
 	@Test
 	public void testCountcharacter() {
 		
-		assertEquals(17, count.Countcharacter());
+		assertEquals(0, count.CountCharacter());
 	}
 
 	@Test
 	public void testCountline() {
 	
-		assertEquals(3, count.Countline());
+		assertEquals(0, count.CountLine());
 	}
 
 	@Test
 	public void testCountword() {
 		
-		assertEquals(3, count.Countword());
+		assertEquals(0, count.CountWord());
 	}
 
 	

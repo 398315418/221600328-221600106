@@ -72,17 +72,17 @@ public class Count
 	    }
 	    return result;
 	  }*/
-	public int Countcharacter() 
+	public int CountCharacter() 
 	{
 		String textNew = text.replaceAll("\r\n", "\n");
 
 		return textNew.length();
 	}
-	public int Countline() {
+	public int CountLine() {
 		
 		return lineNum;
 	}
-	public int  Countword() {
+	public int  CountWord() {
 		int wordNum=0;
 		String regex="[^A-Za-z0-9]";
 		String textLowerCase= text.toLowerCase();
@@ -129,9 +129,6 @@ public class Count
 	    	
 	    }
 	});
-	/*for (Map.Entry<String, Integer> mapping : list) {
-	    System.out.println("<"+mapping.getKey()+ ">"+ " ：" + mapping.getValue());
-	}*/
 	
 	return list;
 	

@@ -4,13 +4,13 @@ import java.util.*;
 public class Count 
 {
 	//private static List<String> list = new ArrayList<String>();
-	private int linenum=0;
+	private int lineNum=0;
 	private static String text = new String();
 	private static Map<String,Integer> map = new HashMap<String,Integer>();
-	private static List<HashMap.Entry<String, Integer>> hotwords = null;
+	private static List<HashMap.Entry<String, Integer>> hotWords = null;
 
-    public static List<HashMap.Entry<String, Integer>> gethotwords() {
-        return hotwords;
+    public static List<HashMap.Entry<String, Integer>> gethotWords() {
+        return hotWords;
     }
 	public Count(File filein)
 	{
@@ -25,24 +25,24 @@ public class Count
 				BufferedReader bf = new BufferedReader(read);
 				BufferedReader bf1 = new BufferedReader(read1);
 				int value = 0;
-				StringBuffer text1 = new StringBuffer();
+				StringBuffer textTemp = new StringBuffer();
 				
 				while ((value=bf.read())!=-1) //按字符读取
 				{
-					text1.append((char)value);
+					textTemp.append((char)value);
 				}
-				text = text1.toString();
+				text = textTemp.toString();
 				String lineTxt = null;
 				
                 while ((lineTxt = bf1.readLine()) != null) //按列读取
                 {
-                	System.out.println(lineTxt);
-                	//!(lineTxt == null || lineTxt.length()<=0)
+                	
+          
                 	String regexSpace = "\\s*";
             		if(!(lineTxt.matches(regexSpace)))
             		{
-            			linenum++;
-                		System.out.println(linenum+"\n");
+            			lineNum++;
+                	
                 	}
                 }
                 bf.close();
@@ -61,6 +61,7 @@ public class Count
             e.printStackTrace();
         }
 	}
+	
 	/*public static String StringToA(String content){ // ASCII码转换
 	    String result = "";
 	    int max = content.length();
@@ -74,20 +75,19 @@ public class Count
 	public int Countcharacter() 
 	{
 		String textNew = text.replaceAll("\r\n", "\n");
-		//System.out.println(StringToA(textNew));
-		System.out.println("共有"+textNew.length()+"字符");
+
 		return textNew.length();
 	}
 	public int Countline() {
 		
-		return linenum;
+		return lineNum;
 	}
 	public int  Countword() {
-		int wordnum=0;
+		int wordNum=0;
 		String regex="[^A-Za-z0-9]";
 		String textLowerCase= text.toLowerCase();
 		String textcontents = textLowerCase.replaceAll(regex, " ");
-		System.out.println("去特殊字符为空格"+textcontents);
+		
 		String[] textarrays = textcontents.split("\\s+");
 		for(int i=0; i<textarrays.length;i++)
 		{
@@ -97,7 +97,7 @@ public class Count
 							Character.isLetter(textarrays[i].charAt(0)) && 
 								Character.isLetter(textarrays[i].charAt(0)))
 			{
-				wordnum++;
+				wordNum++;
 				if(!map.containsKey(textarrays[i]))
 					map.put(textarrays[i],1);
 				else
@@ -108,9 +108,9 @@ public class Count
 				}
 			}
 		}
-		System.out.println("word"+wordnum);
-		hotwords=Sort(map);
-		return wordnum;
+		
+		hotWords=Sort(map);
+		return wordNum;
 		
 	}
 	

@@ -29,7 +29,7 @@ public class Main {
                 String resultcontent ="characters:"+ characterNum + "\r\n" 
 	        	 + "words:" +wordNum + "\r\n" 
                 	+"lines:"+ lineNum+"\r\n";
-                List<HashMap.Entry<String, Integer>> m = count.gethotwords();
+                List<HashMap.Entry<String, Integer>> m = count.gethotWords();
 
                 int i = 0;
                 String j = new String();
@@ -41,6 +41,7 @@ public class Main {
                         }
                     }
                 }
+                System.out.println(resultcontent);
                 fileout.write(resultcontent.getBytes());
               
                 fileout.flush();
